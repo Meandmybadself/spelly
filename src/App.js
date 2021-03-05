@@ -113,7 +113,6 @@ export default function App() {
         spellCheck="false"
         autoComplete="new-password"
         value={text}
-        readOnly
       />
       <KeyboardEventHandler
         handleKeys={["alphabetic"]}
@@ -145,9 +144,10 @@ export default function App() {
       />
 
       <KeyboardEventHandler
-        handleKeys={["del", "delete"]}
+        handleKeys={["del", "delete", "backspace"]}
         handleFocusableElements
         onKeyEvent={() => {
+          console.log(text, startingString);
           if (text === startingString) {
             setText("");
           } else {
