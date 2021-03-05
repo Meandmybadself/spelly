@@ -1,0 +1,87 @@
+.App {
+  font-family: -apple-system-headline, Helvetica, Arial, san-serif;
+  text-align: center;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  position: relative;
+}
+
+html,
+body {
+  border: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+#modeBtn {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  padding: 0 15px;
+  height: 50px;
+  border-radius: 25px;
+  background-color: #88995b;
+  color: white;
+  font-weight: 800;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+html {
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+*:focus {
+  outline: none;
+}
+
+/** stolen from https://fossheim.io/writing/posts/css-text-gradient/ **/
+textarea.main {
+  font-family: -apple-system-headline, Helvetica, Arial, san-serif;
+  text-align: center;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  border: none;
+  text-align: center;
+  font-size: 8vw;
+  font-weight: 800;
+  text-transform: uppercase;
+  -webkit-background-clip: text;
+  background-clip: text;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  background-image: linear-gradient(
+    90deg,
+    #ca4246 16.666%,
+    #e16541 16.666%,
+    #e16541 33.333%,
+    #f18f43 33.333%,
+    #f18f43 50%,
+    #8b9862 50%,
+    #8b9862 66.666%,
+    #476098 66.666%,
+    #476098 83.333%,
+    #a7489b 83.333%
+  );
+  -webkit-text-fill-color: transparent;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
