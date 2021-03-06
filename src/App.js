@@ -1,5 +1,5 @@
 import "./styles.css";
-import { useState, useEffect, useCallback, useRef } from "react";
+import { Fragment, useState, useEffect, useCallback, useRef } from "react";
 import shuffle from "lodash.shuffle";
 import KeyboardEventHandler from "react-keyboard-event-handler";
 
@@ -102,59 +102,71 @@ export default function App() {
   }, [inputEl]);
 
   return (
-    <div className="App">
-      <div id="modeBtn" onClick={() => toggleMode()}>
-        {word && "Say Words"}
-        {!word && "Spell Words"}
-      </div>
-      <textarea
-        ref={inputEl}
-        className="main"
-        spellCheck="false"
-        autoComplete="new-password"
-        value={text}
-        rows={1}
-      />
-      <KeyboardEventHandler
-        handleKeys={["alphabetic"]}
-        handleFocusableElements
-        onKeyEvent={(key, e) => handleKeypress(key, e)}
-      />
+    <Fragment>
+      <header>
+        <div id="modeBtn" onClick={() => toggleMode()}>
+          {word && "Say Words"}
+          {!word && "Spell Words"}
+        </div>
+        <h1>Spelly</h1>
+      </header>
+      <main className="App">
+        <textarea
+          ref={inputEl}
+          className="main"
+          spellCheck="false"
+          autoComplete="new-password"
+          value={text}
+          rows={1}
+        />
+        <p>
+          <span>Type a letter to hear it.</span>
+          <br />
+          <span>
+            Hit <span className="green">Enter</span> to hear the word.
+          </span>
+        </p>
+        <KeyboardEventHandler
+          handleKeys={["alphabetic"]}
+          handleFocusableElements
+          onKeyEvent={(key, e) => handleKeypress(key, e)}
+        />
 
-      <KeyboardEventHandler
-        handleKeys={["esc"]}
-        handleFocusableElements
-        onKeyEvent={() => setText("")}
-      />
+        <KeyboardEventHandler
+          handleKeys={["esc"]}
+          handleFocusableElements
+          onKeyEvent={() => setText("")}
+        />
 
-      <KeyboardEventHandler
-        handleKeys={["enter", "return"]}
-        handleFocusableElements
-        onKeyEvent={() => {
-          if (word) {
-            if (word.toLowerCase().trim() === text.toLowerCase().trim()) {
-              say("Correct!");
-              nextWord(true);
+        <KeyboardEventHandler
+          handleKeys={["enter", "return"]}
+          handleFocusableElements
+          onKeyEvent={() => {
+            if (word) {
+              if (word.toLowerCase().trim() === text.toLowerCase().trim()) {
+                say("Correct!");
+                nextWord(true);
+              } else {
+                say(`Wrong. Try again. Spell ${word}.`);
+              }
             } else {
-              say(`Wrong. Try again. Spell ${word}.`);
+              say(text);
             }
-          } else {
-            say(text);
-          }
-        }}
-      />
+          }}
+        />
 
-      <KeyboardEventHandler
-        handleKeys={["del", "delete", "backspace"]}
-        handleFocusableElements
-        onKeyEvent={() => {
-          if (text === startingString) {
-            setText("");
-          } else {
-            setText(text.slice(0, -1));
-          }
-        }}
-      />
-    </div>
+        <KeyboardEventHandler
+          handleKeys={["del", "delete", "backspace"]}
+          handleFocusableElements
+          onKeyEvent={() => {
+            if (text === startingString) {
+              setText("");
+            } else {
+              setText(text.slice(0, -1));
+            }
+          }}
+        />
+      </main>
+    </Fragment>
   );
 }

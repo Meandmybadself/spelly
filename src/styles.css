@@ -1,7 +1,11 @@
-.App {
-  font-family: "Gotham Rounded SSm A", "Gotham Rounded SSm B",
-    -apple-system-headline, Helvetica, Arial, san-serif;
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
 
+main.App {
   text-align: center;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -33,10 +37,12 @@ html {
   height: -webkit-fill-available;
 }
 
+* {
+  font-family: "Gotham Rounded SSm A", "Gotham Rounded SSm B",
+    -apple-system-headline, Helvetica, Arial, san-serif;
+}
+
 #modeBtn {
-  position: absolute;
-  top: 20px;
-  left: 20px;
   padding: 0 15px;
   height: 50px;
   border-radius: 25px;
@@ -63,16 +69,22 @@ html {
   outline: none;
 }
 
+h1 {
+  color: #4d87ff;
+  font-size: 22px;
+  font-weight: 400;
+}
+
 /** stolen from https://fossheim.io/writing/posts/css-text-gradient/ **/
 textarea.main {
-  font-family: "Gotham Rounded SSm A", "Gotham Rounded SSm B",
-    -apple-system-headline, Helvetica, Arial, san-serif;
+  /* font-family: "Gotham Rounded SSm A", "Gotham Rounded SSm B",
+    -apple-system-headline, Helvetica, Arial, san-serif; */
   text-align: center;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   border: none;
   text-align: center;
-  font-size: 9vw;
+  font-size: 14vw;
   font-weight: 800;
   text-transform: uppercase;
   /* -webkit-background-clip: text;
@@ -88,4 +100,8 @@ textarea.main {
   color: #f30069;
   /* -webkit-text-fill-color: transparent; */
   white-space: nowrap;
+}
+
+.green {
+  color: #00c500;
 }
