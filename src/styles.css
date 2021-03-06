@@ -3,6 +3,12 @@ header {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  padding: 10px;
 }
 
 main {
@@ -28,6 +34,7 @@ footer {
   justify-content: center;
   align-items: center;
   position: absolute;
+  z-index: 2;
   left: 0;
   right: 0;
   bottom: 0;
