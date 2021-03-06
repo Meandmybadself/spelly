@@ -1,5 +1,7 @@
 .App {
-  font-family: -apple-system-headline, Helvetica, Arial, san-serif;
+  font-family: "Gotham Rounded SSm A", "Gotham Rounded SSm B",
+    -apple-system-headline, Helvetica, Arial, san-serif;
+
   text-align: center;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -63,7 +65,8 @@ html {
 
 /** stolen from https://fossheim.io/writing/posts/css-text-gradient/ **/
 textarea.main {
-  font-family: -apple-system-headline, Helvetica, Arial, san-serif;
+  font-family: "Gotham Rounded SSm A", "Gotham Rounded SSm B",
+    -apple-system-headline, Helvetica, Arial, san-serif;
   text-align: center;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
