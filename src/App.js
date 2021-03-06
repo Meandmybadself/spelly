@@ -123,7 +123,7 @@ export default function App() {
           <span>Type a letter to hear it.</span>
           <br />
           <span>
-            Hit <span className="green">Enter</span> to hear the word.
+            Hit <span className="green">Return</span> to hear the word.
           </span>
         </p>
         <KeyboardEventHandler
