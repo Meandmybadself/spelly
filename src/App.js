@@ -167,6 +167,9 @@ export default function App() {
           }}
         />
       </main>
+      <footer>
+        <a href="https://github.com/meandmybadself/spelly">Source</a>
+      </footer>
     </Fragment>
   );
 }
