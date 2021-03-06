@@ -35,7 +35,7 @@ const initialWordList = [
 ];
 
 export default function App() {
-  const startingString = "start typing.";
+  const startingString = "type here";
   const [text, setText] = useState(startingString);
   const [words, setWords] = useState();
   const [word, setWord] = useState("");
@@ -104,8 +104,8 @@ export default function App() {
   return (
     <div className="App">
       <div id="modeBtn" onClick={() => toggleMode()}>
-        {word && "Say"}
-        {!word && "Spell"}
+        {word && "Say Words"}
+        {!word && "Spell Words"}
       </div>
       <textarea
         ref={inputEl}
@@ -113,6 +113,7 @@ export default function App() {
         spellCheck="false"
         autoComplete="new-password"
         value={text}
+        rows={1}
       />
       <KeyboardEventHandler
         handleKeys={["alphabetic"]}
@@ -147,7 +148,6 @@ export default function App() {
         handleKeys={["del", "delete", "backspace"]}
         handleFocusableElements
         onKeyEvent={() => {
-          console.log(text, startingString);
           if (text === startingString) {
             setText("");
           } else {
