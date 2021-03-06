@@ -102,6 +102,10 @@ textarea.main {
   white-space: nowrap;
 }
 
+p {
+  margin-top: 20px;
+}
+
 .green {
   color: #00c500;
 }
