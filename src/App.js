@@ -1,44 +1,44 @@
-import "./styles.css";
-import { Fragment, useState, useEffect, useCallback, useRef } from "react";
-import shuffle from "lodash.shuffle";
-import KeyboardEventHandler from "react-keyboard-event-handler";
+import './styles.css';
+import { Fragment, useState, useEffect, useCallback, useRef } from 'react';
+import shuffle from 'lodash.shuffle';
+import KeyboardEventHandler from 'react-keyboard-event-handler';
 
 const initialWordList = [
-  "are",
-  "bed",
-  "big",
-  "box",
-  "boy",
-  "bus",
-  "cat",
-  "did",
-  "dog",
-  "fall",
-  "fin",
-  "fox",
-  "girl",
-  "had",
-  "hen",
-  "hat",
-  "hot",
-  "like",
-  "love",
-  "off",
-  "play",
-  "red",
-  "run",
-  "the",
-  "top",
-  "vet",
-  "yes",
-  "you"
+  'are',
+  'bed',
+  'big',
+  'box',
+  'boy',
+  'bus',
+  'cat',
+  'did',
+  'dog',
+  'fall',
+  'fin',
+  'fox',
+  'girl',
+  'had',
+  'hen',
+  'hat',
+  'hot',
+  'like',
+  'love',
+  'off',
+  'play',
+  'red',
+  'run',
+  'the',
+  'top',
+  'vet',
+  'yes',
+  'you',
 ];
 
 export default function App() {
-  const startingString = "type here";
+  const startingString = 'type here';
   const [text, setText] = useState(startingString);
   const [words, setWords] = useState();
-  const [word, setWord] = useState("");
+  const [word, setWord] = useState('');
   const inputEl = useRef(null);
 
   const say = (str) => {
@@ -56,13 +56,13 @@ export default function App() {
         setWord(newWord);
         setWords(tempWords);
         if (afterSuccess) {
-          say(`Now, spell ${newWord}`);
+          say(`Now, spell ... ${newWord}`);
         } else {
-          say(`Spell ${newWord}`);
+          say(`Spell ... ${newWord}`);
         }
-        setText("");
+        setText('');
       } else {
-        console.log("out of words.");
+        console.log('out of words.');
       }
     },
     [words, setWords, setText]
@@ -98,15 +98,15 @@ export default function App() {
 
   useEffect(() => {
     inputEl.current.focus();
-    inputEl.current.addEventListener("blur", () => inputEl.current.focus());
+    inputEl.current.addEventListener('blur', () => inputEl.current.focus());
   }, [inputEl]);
 
   return (
     <Fragment>
       <header>
         <div id="modeBtn" onClick={() => toggleMode()}>
-          {word && "Say Words"}
-          {!word && "Spell Words"}
+          {word && 'Say Words'}
+          {!word && 'Spell Words'}
         </div>
         <h1>Spelly</h1>
       </header>
@@ -127,27 +127,27 @@ export default function App() {
           </span>
         </p>
         <KeyboardEventHandler
-          handleKeys={["alphabetic"]}
+          handleKeys={['alphabetic']}
           handleFocusableElements
           onKeyEvent={(key, e) => handleKeypress(key, e)}
         />
 
         <KeyboardEventHandler
-          handleKeys={["esc"]}
+          handleKeys={['esc']}
           handleFocusableElements
-          onKeyEvent={() => setText("")}
+          onKeyEvent={() => setText('')}
         />
 
         <KeyboardEventHandler
-          handleKeys={["enter", "return"]}
+          handleKeys={['enter', 'return']}
           handleFocusableElements
           onKeyEvent={() => {
             if (word) {
               if (word.toLowerCase().trim() === text.toLowerCase().trim()) {
-                say("Correct!");
+                say('Correct!');
                 nextWord(true);
               } else {
-                say(`Wrong. Try again. Spell ${word}.`);
+                say(`Wrong. Try again. Spell ... ${word}.`);
               }
             } else {
               say(text);
@@ -156,11 +156,11 @@ export default function App() {
         />
 
         <KeyboardEventHandler
-          handleKeys={["del", "delete", "backspace"]}
+          handleKeys={['del', 'delete', 'backspace']}
           handleFocusableElements
           onKeyEvent={() => {
             if (text === startingString) {
-              setText("");
+              setText('');
             } else {
               setText(text.slice(0, -1));
             }
