@@ -79,14 +79,20 @@ export default function App() {
   }, [word, setWord, nextWord]);
 
   const handleKeypress = useCallback(
-    (key, e) => {
+    (key) => {
       key = key.toLowerCase();
+      console.log(`:${key}:`);
       if (text === startingString) {
         setText(key);
       } else {
+        if (key === "space") {
+          key = " ";
+        }
         setText(`${text}${key}`);
       }
-      say(key);
+      if (key.trim().length === 1) {
+        say(key);
+      }
     },
     [text, setText]
   );
@@ -127,7 +133,7 @@ export default function App() {
           </span>
         </p>
         <KeyboardEventHandler
-          handleKeys={["alphabetic"]}
+          handleKeys={["alphabetic", "numeric", "space"]}
           handleFocusableElements
           onKeyEvent={(key, e) => handleKeypress(key, e)}
         />
@@ -169,6 +175,10 @@ export default function App() {
       </main>
       <footer>
         <a href="https://github.com/meandmybadself/spelly">Source</a>
+        &nbsp;
+        <a href="https://codesandbox.io/s/gracious-ellis-mumux?file=/src/App.js">
+          Sandbox
+        </a>
       </footer>
     </Fragment>
   );
