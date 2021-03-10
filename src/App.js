@@ -2,7 +2,63 @@ import "./styles.css";
 import { Fragment, useState, useEffect, useCallback, useRef } from "react";
 import shuffle from "lodash.shuffle";
 import KeyboardEventHandler from "react-keyboard-event-handler";
+import Confetti from "react-confetti";
 
+const firstNames = [
+  "abigail",
+  "aiden",
+  "alexander",
+  "amelia",
+  "aria",
+  "ashley",
+  "ava",
+  "avery",
+  "benjamin",
+  "brooks",
+  "bryce",
+  "caden",
+  "charlie",
+  "charlotte",
+  "daniel",
+  "elijah",
+  "elizabeth",
+  "ella",
+  "emily",
+  "emma",
+  "ethan",
+  "evelyn",
+  "gianna",
+  "grayson",
+  "harper",
+  "henry",
+  "isabella",
+  "jackson",
+  "jacob",
+  "james",
+  "joseph",
+  "layla",
+  "liam",
+  "logan",
+  "lucas",
+  "madison",
+  "marian",
+  "mason",
+  "mason",
+  "matthew",
+  "mia",
+  "michael",
+  "noah",
+  "oliver",
+  "olivia",
+  "quinn",
+  "riley",
+  "scarlett",
+  "sofia",
+  "sophia",
+  "sophia",
+  "victoria",
+  "william"
+];
 const initialWordList = [
   "are",
   "bed",
@@ -37,6 +93,7 @@ const initialWordList = [
 export default function App() {
   const startingString = "type here";
   const [text, setText] = useState(startingString);
+  const [confettiVisibility, setConfettiVisibility] = useState(false);
   const [words, setWords] = useState();
   const [word, setWord] = useState("");
   const inputEl = useRef(null);
@@ -132,6 +189,7 @@ export default function App() {
             Hit <span className="green">Return</span> to hear the word.
           </span>
         </p>
+        <Confetti numberOfPieces={confettiVisibility ? 500 : 0} />
         <KeyboardEventHandler
           handleKeys={["alphabetic", "numeric", "space"]}
           handleFocusableElements
@@ -156,6 +214,12 @@ export default function App() {
                 say(`Wrong. Try again. Spell ${word}.`);
               }
             } else {
+              if (firstNames.includes(text.toLowerCase().trim())) {
+                if (!confettiVisibility) {
+                  setConfettiVisibility(true);
+                  setTimeout(() => setConfettiVisibility(false), 5000);
+                }
+              }
               say(text);
             }
           }}
