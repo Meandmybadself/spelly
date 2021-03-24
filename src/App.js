@@ -48,6 +48,7 @@ const firstNames = [
   "james",
   "joe",
   "joseph",
+  "jules",
   "layla",
   "liam",
   "logan",
@@ -67,11 +68,13 @@ const firstNames = [
   "rachel",
   "riley",
   "scarlett",
+  "skye",
   "sofia",
   "sophia",
   "sophia",
   "victoria",
-  "william"
+  "william",
+  "wren"
 ];
 const initialWordList = [
   "are",
