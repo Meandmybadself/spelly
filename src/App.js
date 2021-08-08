@@ -117,7 +117,6 @@ export default function App() {
   const [words, setWords] = useState();
   const [word, setWord] = useState("");
   const inputEl = useRef(null);
-  const appRef = useRef(null)
 
   const say = (str) => {
     const msg = new SpeechSynthesisUtterance();
