@@ -117,6 +117,7 @@ export default function App() {
   const [words, setWords] = useState();
   const [word, setWord] = useState("");
   const inputEl = useRef(null);
+  const appRef = useRef(null)
 
   const say = (str) => {
     const msg = new SpeechSynthesisUtterance();
@@ -201,6 +202,7 @@ export default function App() {
           autoComplete="new-password"
           value={text}
           rows={1}
+          onClick={() => document.getElementById('root').requestFullscreen()}
         />
         <p>
           <span>Type a letter to hear it.</span>
@@ -260,9 +262,13 @@ export default function App() {
       <footer>
         <a href="https://github.com/meandmybadself/spelly">Source</a>
         &nbsp;
+        &nbsp;
         <a href="https://codesandbox.io/s/gracious-ellis-mumux?file=/src/App.js">
           Sandbox
         </a>
+        &nbsp;
+        &nbsp;
+        <a href="https://meandmybadself.com">Me & My Bad Self</a>
       </footer>
     </Fragment>
   );
