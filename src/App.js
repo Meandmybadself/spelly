@@ -80,30 +80,41 @@ const firstNames = [
   "wren"
 ];
 const initialWordList = [
-  "are",
+  "bad",
+  "bar",
+  "bat",
   "bed",
+  "beg",
+  "bet",
   "big",
+  "bit",
   "box",
   "boy",
   "bus",
+  "cad",
+  "cab",
+  "can",
+  "cap",
   "cat",
+  "cop",
+  "dad",
   "did",
   "dog",
   "fall",
   "fin",
   "fox",
-  "girl",
   "had",
   "hen",
   "hat",
+  "hit",
   "hot",
-  "like",
   "love",
-  "off",
-  "play",
-  "red",
+  "mom",
+  "pad",
   "run",
   "the",
+  "tap",
+  "tip",
   "top",
   "vet",
   "yes",
@@ -230,6 +241,8 @@ export default function App() {
             if (word) {
               if (word.toLowerCase().trim() === text.toLowerCase().trim()) {
                 say("Correct!");
+                setConfettiVisibility(true);
+                setTimeout(() => setConfettiVisibility(false), 2000);
                 nextWord(true);
               } else {
                 say(`Wrong. Try again. Spell ${word}.`);
