@@ -9,6 +9,7 @@ const firstNames = [
   "aiden",
   "alex",
   "alexander",
+  "alexandra",
   "amelia",
   "aria",
   "arlo",
@@ -31,6 +32,7 @@ const firstNames = [
   "elijah",
   "elizabeth",
   "ella",
+  "emelia",
   "emily",
   "emma",
   "ethan",
@@ -61,6 +63,7 @@ const firstNames = [
   "marian",
   "mason",
   "mason",
+  "matt",
   "matthew",
   "mia",
   "michael",
@@ -169,7 +172,6 @@ export default function App() {
   const handleKeypress = useCallback(
     (key) => {
       key = key.toLowerCase();
-      console.log(`:${key}:`);
       if (text === startingString) {
         setText(key);
       } else {
@@ -231,7 +233,10 @@ export default function App() {
         <KeyboardEventHandler
           handleKeys={["esc"]}
           handleFocusableElements
-          onKeyEvent={() => setText("")}
+          onKeyEvent={() => {
+            window.speechSynthesis.cancel();
+            setText("");
+          }}
         />
 
         <KeyboardEventHandler
