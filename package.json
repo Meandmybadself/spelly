@@ -1,7 +1,7 @@
 {
   "name": "spelly",
-  "version": "1.0.0",
-  "description": "",
+  "version": "1.1.0",
+  "description": "An online spelling tool.",
   "keywords": [],
   "engines": {
     "node": ">= 20"
