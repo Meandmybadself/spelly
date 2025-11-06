@@ -41,4 +41,14 @@ pnpm build
 
 ## Deployment
 
-The site automatically deploys to GitHub Pages when changes are pushed to the `main` branch via GitHub Actions. Simply commit and push your changes to deploy!
+The site is hosted on GitHub Pages, serving from the `main` branch.
+
+To deploy:
+1. Build the project: `BUILD_PATH='./' pnpm build`
+2. Commit and push the changes to the `main` branch
+3. GitHub Pages will automatically serve the updated site
+
+**GitHub Pages Settings:**
+- Source: Deploy from a branch
+- Branch: main
+- Folder: /

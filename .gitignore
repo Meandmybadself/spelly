@@ -72,9 +72,6 @@ bower_components
 # Compiled binary addons (https://nodejs.org/api/addons.html)
 build/Release
 
-# React build output
-/build
-
 # Dependency directories
 node_modules/
 jspm_packages/
@@ -171,3 +168,5 @@ dist
 .ionide
 
 # End of https://www.toptal.com/developers/gitignore/api/node,macos,visualstudiocode
+
+build
