@@ -12,6 +12,7 @@ const firstNames = [
   "alexandra",
   "allie",
   "amelia",
+  "ari",
   "aria",
   "arlo",
   "asher",
@@ -132,12 +133,17 @@ export default function App() {
   const [confettiVisibility, setConfettiVisibility] = useState(false);
   const [words, setWords] = useState();
   const [word, setWord] = useState("");
+  const [availableVoices, setAvailableVoices] = useState([]);
+  const [selectedVoice, setSelectedVoice] = useState(null);
   const inputEl = useRef(null);
 
   const say = (str) => {
     const msg = new SpeechSynthesisUtterance();
     msg.text = str;
     msg.rate = 0.7;
+    if (selectedVoice) {
+      msg.voice = selectedVoice;
+    }
     window.speechSynthesis.speak(msg);
   };
 
@@ -199,6 +205,20 @@ export default function App() {
     inputEl.current.addEventListener("blur", () => inputEl.current.focus());
   }, [inputEl]);
 
+  useEffect(() => {
+    const loadVoices = () => {
+      const voices = window.speechSynthesis.getVoices().filter(v => v.lang === 'en-US');
+      setAvailableVoices(voices);
+      // Set default to first English voice or first available voice
+      const defaultVoice = voices.find(v => v.lang === 'en-US') || voices[0];
+      setSelectedVoice(defaultVoice);
+    };
+    
+    loadVoices();
+    // Voices load asynchronously in some browsers
+    window.speechSynthesis.onvoiceschanged = loadVoices;
+  }, []);
+
   return (
     <Fragment>
       <header>
@@ -207,6 +227,20 @@ export default function App() {
           {!word && "Spell Words"}
         </div>
         <h1>Spelly</h1>
+        <select 
+          value={selectedVoice?.name || ''} 
+          onChange={(e) => {
+            const voice = availableVoices.find(v => v.name === e.target.value);
+            setSelectedVoice(voice);
+          }}
+          className="voiceSelector"
+        >
+          {availableVoices.map((voice) => (
+            <option key={voice.name} value={voice.name}>
+              {voice.name.replace(/\(+[^\)]+\)+/g, '').trim()}
+            </option>
+          ))}
+        </select>
       </header>
       <main className="App">
         <textarea

@@ -4,7 +4,7 @@ A fun, interactive spelling tool for kids that uses text-to-speech to help them 
 
 **Live Site:** https://meandmybadself.github.io/spelly
 
-![Spelly Screenshot](./public/screenshot.jpg)
+![Spelly Screenshot](./public/thumbnail.jpg)
 
 ## Overview
 
